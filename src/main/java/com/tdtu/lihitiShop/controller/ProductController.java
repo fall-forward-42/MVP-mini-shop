@@ -3,23 +3,32 @@ package com.tdtu.lihitiShop.controller;
 import com.tdtu.lihitiShop.dto.ProductDto;
 import com.tdtu.lihitiShop.dto.ProductDto;
 import com.tdtu.lihitiShop.dto.ProductImagesDto;
+import com.tdtu.lihitiShop.entity.Product;
+import com.tdtu.lihitiShop.mapper.ProductMapper;
 import com.tdtu.lihitiShop.service.ProductImagesService;
 import com.tdtu.lihitiShop.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("api/products")
 public class ProductController {
     private ProductService productService;
+
     private ProductImagesService productImagesService;
+
 
     @PostMapping("{id}/image")
     public ResponseEntity<ProductImagesDto> createImageForProduct(@PathVariable("id") String id
@@ -54,11 +63,13 @@ public class ProductController {
         ProductDto ProductDto = productService.getProductById(id);
         return ResponseEntity.ok(ProductDto);
     }
+    //get all prods
     @GetMapping
     public ResponseEntity<List<ProductDto>> getAllPro(){
         List<ProductDto> items = productService.getAllProducts();
         return ResponseEntity.ok(items);
     }
+
     @PutMapping("{id}")
     public ResponseEntity<ProductDto> updatePro(@PathVariable("id") String id,
                                                   @RequestBody ProductDto updateCateDto
@@ -72,23 +83,6 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok("Delete successfully !");
     }
-    @GetMapping("/search")
-    public ResponseEntity<List<ProductDto>> searchProducts(
-            @RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "description", required = false) String description,
-            @RequestParam(value = "minPrice", required = false) Double minPrice,
-            @RequestParam(value = "maxPrice", required = false) Double maxPrice,
-            @RequestParam(value = "stockNumber", required = false) Integer stockNumber,
-            @RequestParam(value = "categoryId", required = false) String categoryId,
-            @RequestParam(value = "brand", required = false) String brand,
-            @RequestParam(value = "origin", required = false) String origin
 
-    ){
-        List<ProductDto> products = productService.searchProducts(
-                name, description, minPrice, maxPrice, stockNumber,
-                categoryId, brand, origin
-        );
-        return ResponseEntity.ok(products);
-    }
     
 }

@@ -28,4 +28,5 @@ public class UserDto {
     private String address;
     private Date createdAt;
     private Date updatedAt;
+    private String roles;
 }

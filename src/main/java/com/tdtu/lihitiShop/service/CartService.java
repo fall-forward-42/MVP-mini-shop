@@ -2,20 +2,35 @@ package com.tdtu.lihitiShop.service;
 
 import com.tdtu.lihitiShop.dto.CartDto;
 import com.tdtu.lihitiShop.dto.CartItemDto;
+import com.tdtu.lihitiShop.dto.OrderDto;
 import com.tdtu.lihitiShop.entity.CartItem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface CartService {
-    public ResponseEntity<CartItem> addProductToCart(String userId, String productId, int quantity);
+    public CartItemDto addProductToCart(String userId, String productId, int quantity);
 
 
-    void removeProductFromCart(String cartItemId);
+    CartItemDto updateQuantityForItem(String cartItemId, Integer quantity);
 
-    CartItemDto updateQuantityForItem(String cartItemId);
+    public OrderDto submitCartToOrder(String idCart);
 
-    public CartDto moveToOrder(String idCart);
+    public List<CartItemDto> getAllItemsOfCartByUserId(String userId);
+
+    public CartDto getCartById(String cartId);
+
+    public List<CartItemDto> getAllItemsOfCartByCartId(String cartId);
+
+    //cart items
+    public CartItemDto getItemOfCartById(String cartItemId);
+
+    void removeCart(String cartItemId);
+
+
+
 
 
 }

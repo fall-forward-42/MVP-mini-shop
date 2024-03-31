@@ -2,7 +2,11 @@ package com.tdtu.lihitiShop.service.impl;
 
 import com.tdtu.lihitiShop.dto.OrderDto;
 import com.tdtu.lihitiShop.service.OrderService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class
 OrderServiceImpl implements OrderService {
 

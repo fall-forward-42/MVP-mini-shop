@@ -9,7 +9,7 @@ public class OrderItemMapper {
     public OrderItemDto mapToDto(OrderItem entity) {
         return new OrderItemDto(
                 entity.getId_order_item(),
-                ProductMapper.mapToProductDto(entity.getProduct()),
+                entity.getId_product(),
                 OrderMapper.mapToDto( entity.getOrder()),
                 entity.getQuantity(),
                 entity.getPrice()
@@ -19,7 +19,7 @@ public class OrderItemMapper {
     public OrderItem mapToEntity(OrderItemDto dto) {
         return new OrderItem(
                 dto.getId_order_item(),
-                ProductMapper.mapToProduct(dto.getProduct()),
+                dto.getId_product(),
                 OrderMapper.mapToEntity( dto.getOrder()),
                 dto.getQuantity(),
                 dto.getPrice()

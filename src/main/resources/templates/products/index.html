@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+<h1>Products</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Expiry Date</th>
+        <th>Unit</th>
+        <th>Brand</th>
+        <th>Weight</th>
+        <th>Origin</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Category</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id_product}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.stock}"></td>
+        <td th:text="${product.expiry_date}"></td>
+        <td th:text="${product.unit}"></td>
+        <td th:text="${product.brand}"></td>
+        <td th:text="${product.weight}"></td>
+        <td th:text="${product.origin}"></td>
+        <td th:text="${product.createdAt}"></td>
+        <td th:text="${product.updatedAt}"></td>
+        <td th:text="${product.category.name}"></td>
+    </tr>
+</table>
+</body>
+</html>

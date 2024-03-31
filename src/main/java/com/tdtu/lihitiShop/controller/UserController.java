@@ -5,11 +5,15 @@ import com.tdtu.lihitiShop.dto.ProductDto;
 import com.tdtu.lihitiShop.dto.UserDto;
 import com.tdtu.lihitiShop.entity.User;
 import com.tdtu.lihitiShop.exception.ResourceNotFoundException;
+import com.tdtu.lihitiShop.mapper.UserMapper;
 import com.tdtu.lihitiShop.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -24,18 +28,13 @@ import java.util.stream.Collectors;
 public class UserController {
     private UserService userService;
 
-    @PostMapping("/sign-up")
-    public ResponseEntity<UserDto> signUp(@Valid @RequestBody UserDto user, BindingResult result){
-        if(result.hasErrors()){
-            Map<String, String> errors = result.getFieldErrors().stream()
-                    .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
-
-            throw new ResourceNotFoundException(errors.toString());
-           // return  ResponseEntity(errors, HttpStatus.BAD_REQUEST);
-        }
-        userService.createUser(user);
-
-        return ResponseEntity.ok().body(user);
+    @GetMapping("/single")
+    public ResponseEntity<UserDetails> getUserDetails() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserDto userDto = UserMapper.mapToUserDto((User) userDetails);
+        System.out.println(userDto.getId_user());
+        return ResponseEntity.ok(userDetails);
     }
 
     @GetMapping("{id}")

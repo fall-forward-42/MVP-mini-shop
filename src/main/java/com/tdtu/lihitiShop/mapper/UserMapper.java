@@ -12,7 +12,8 @@ public class UserMapper {
                 user.getFullName(),
                 user.getAddress(),
                 user.getCreatedAt(),
-                user.getUpdatedAt()
+                user.getUpdatedAt(),
+                user.getRole()
 
         );
     }
@@ -24,7 +25,8 @@ public class UserMapper {
                 userDto.getFullName(),
                 userDto.getAddress(),
                 userDto.getCreatedAt(),
-                userDto.getUpdatedAt()
+                userDto.getUpdatedAt(),
+                userDto.getRoles()
         );
     }
 }

@@ -20,9 +20,8 @@ public class OrderItem
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private String id_order_item;
 
-    @OneToOne
-    @JoinColumn(name = "id_product",nullable = false,referencedColumnName = "id_product")
-    private Product product;
+    ///@JoinColumn(name = "id_product",nullable = false,referencedColumnName = "id_product")
+    private String id_product;
 
     @ManyToOne
     @JoinColumn(name = "id_order",nullable = false,referencedColumnName = "id_order")

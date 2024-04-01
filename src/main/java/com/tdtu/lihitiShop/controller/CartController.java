@@ -5,6 +5,7 @@ import com.tdtu.lihitiShop.dto.OrderDto;
 import com.tdtu.lihitiShop.dto.UserDto;
 import com.tdtu.lihitiShop.entity.CartItem;
 import com.tdtu.lihitiShop.entity.User;
+import com.tdtu.lihitiShop.exception.ResourceNotFoundException;
 import com.tdtu.lihitiShop.mapper.UserMapper;
 import com.tdtu.lihitiShop.service.CartService;
 import com.tdtu.lihitiShop.service.ProductService;
@@ -30,9 +31,9 @@ public class CartController {
 
     public String getCurrUserId(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserDto userDto = UserMapper.mapToUserDto((User) userDetails);
-        return userDto.getId_user();
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            UserDto userDto = UserMapper.mapToUserDto((User) userDetails);
+            return userDto.getId_user();
     }
 
     @PostMapping
@@ -40,7 +41,9 @@ public class CartController {
             @RequestBody CartItemDto cartItemDto
     ){
         System.out.println(cartItemDto);
-
+        if(getCurrUserId()==null){
+            throw new ResourceNotFoundException("Not found user !");
+        }
         CartItemDto itemCart = cartService.addProductToCart(getCurrUserId(),cartItemDto.getProduct().getId_product(),cartItemDto.getQuantity());
         return new  ResponseEntity<>(itemCart, HttpStatus.CREATED);
     }
@@ -49,6 +52,9 @@ public class CartController {
     public ResponseEntity<List<CartItemDto>> getAllItemsOfCartByUserId(
 
     ){
+        if(getCurrUserId()==null){
+            throw new ResourceNotFoundException("Not found user !");
+        }
         List<CartItemDto> itemList = cartService.getAllItemsOfCartByUserId(getCurrUserId());
         return  new ResponseEntity<>(itemList, HttpStatusCode.valueOf(200));
     }
@@ -56,6 +62,9 @@ public class CartController {
     public ResponseEntity<List<CartItemDto>> removeCart(
             @RequestParam(value = "IdCart") String idCart
     ){
+        if(getCurrUserId()==null){
+            throw new ResourceNotFoundException("Not found user !");
+        }
         cartService.removeCart(idCart);
         List<CartItemDto> itemList = cartService.getAllItemsOfCartByUserId(getCurrUserId());
         return  new ResponseEntity<>(itemList, HttpStatusCode.valueOf(200));
@@ -64,7 +73,9 @@ public class CartController {
     @GetMapping("/submit")
     public ResponseEntity<OrderDto> submitCartToOrder(
             ){
-
+        if(getCurrUserId()==null){
+            throw new ResourceNotFoundException("Not found user !");
+        }
         //find cart of user
         String idCart = cartService.getAllItemsOfCartByUserId(getCurrUserId()).get(0).getCart().getId_cart();
        OrderDto order = cartService.submitCartToOrder(idCart);

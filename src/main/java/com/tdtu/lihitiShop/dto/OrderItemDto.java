@@ -19,4 +19,6 @@ public class OrderItemDto {
     private Integer quantity;
 
     private Double price;
+
+    private ProductDto product;
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 @Getter
 @Setter
@@ -26,5 +27,7 @@ public class OrderDto {
     private String address;
 
     private OrderStatus status;
+
+    private List<OrderItemDto> orderItems;
 
 }

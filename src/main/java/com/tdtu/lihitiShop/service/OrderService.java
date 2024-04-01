@@ -16,4 +16,12 @@ public interface OrderService {
     public OrderDto cancelOrder(String idOrder);//status cancelled
 
 
+    public List<OrderItemDto> getDetailsOfOrder(String orderId);
+    public List<OrderDto> getAllOrdersByUserId(String userId);
+
+    public OrderDto getOrderByUserId(String userId);
+
+
+
+
 }

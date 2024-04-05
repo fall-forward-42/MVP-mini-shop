@@ -18,6 +18,4 @@ public interface ProductService {
     List<ProductDto> searchProducts(
             String name, String description, Double minPrice, Double maxPrice, Integer stockNumber,
             String categoryId, String brand, String origin);
-
-
 }

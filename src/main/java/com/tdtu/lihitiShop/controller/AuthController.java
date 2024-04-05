@@ -67,18 +67,5 @@ public class AuthController {
         return ResponseEntity.ok().body(authService.refreshToken(req));
     }
 
-//    @GetMapping("/single")
-//    @PreAuthorize("hasAuthority('ADMIN') or hasAnyAuthority('USER')")
-//    public ResponseEntity<Object> getMyDetails(){
-//        Optional<User> user = userRepository.findByUsername(getLoggedInUserDetails().getUsername());
-//        return ResponseEntity.ok(user);
-//    }
-//
-//    public UserDetails getLoggedInUserDetails(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if(authentication!=null && authentication.getPrincipal() instanceof UserDetails){
-//            return (UserDetails) authentication.getPrincipal();
-//        }
-//        return null;
-//    }
+
 }

@@ -28,5 +28,6 @@ public class ProductDto {
         private String origin;
         private  Date createdAt;
         private  Date updatedAt;
+        private String image;
         private CategoryDto category;
 }

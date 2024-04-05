@@ -26,6 +26,7 @@ public class Product {
     private String name;
     @Column(name = "description")
     private String description;
+    private String image;
     @Column(name = "price", nullable = false)
     private double price;
     @Column(name = "stock", nullable = false)
@@ -48,6 +49,8 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_at", nullable = false)
     private  Date updatedAt;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cate")

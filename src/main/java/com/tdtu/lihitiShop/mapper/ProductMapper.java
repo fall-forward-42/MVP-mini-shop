@@ -22,6 +22,7 @@ public class ProductMapper {
                 product.getOrigin(),
                 product.getCreatedAt(),
                 product.getUpdatedAt(),
+                product.getImage(),
                 CategoryMapper.mapToCategoryDto(product.getCategory())
         );
     }
@@ -42,6 +43,7 @@ public class ProductMapper {
         product.setOrigin(productDto.getOrigin());
         product.setCreatedAt(productDto.getCreatedAt());
         product.setUpdatedAt(productDto.getUpdatedAt());
+        product.setImage(productDto.getImage());
         product.setCategory(CategoryMapper.mapToCategory(productDto.getCategory()));
         return product;
 

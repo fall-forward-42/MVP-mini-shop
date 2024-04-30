@@ -36,6 +36,8 @@ public class CartController {
             return userDto.getId_user();
     }
 
+
+
     @PostMapping
     public ResponseEntity<CartItemDto> addItemToCart(
             @RequestBody CartItemDto cartItemDto
@@ -48,9 +50,22 @@ public class CartController {
         return new  ResponseEntity<>(itemCart, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/delete-item")
+    public ResponseEntity<String> deleteItem(@RequestBody CartItemDto cartItemDto){
+
+        cartService.deleteItem(cartItemDto);
+        return ResponseEntity.accepted().body("Remove successfully");
+    }
+
+    @PutMapping("/update-quantity-item")
+    public ResponseEntity<CartItemDto> updateItem(@RequestBody CartItemDto cartItemDto){
+
+        CartItemDto item = cartService.updateItem(cartItemDto);
+        return new ResponseEntity<>(item,HttpStatus.ACCEPTED);
+    }
+
     @GetMapping
     public ResponseEntity<List<CartItemDto>> getAllItemsOfCartByUserId(
-
     ){
         if(getCurrUserId()==null){
             throw new ResourceNotFoundException("Not found user !");
@@ -68,7 +83,6 @@ public class CartController {
         cartService.removeCart(idCart);
         List<CartItemDto> itemList = cartService.getAllItemsOfCartByUserId(getCurrUserId());
         return  new ResponseEntity<>(itemList, HttpStatusCode.valueOf(200));
-
     }
     @GetMapping("/submit")
     public ResponseEntity<OrderDto> submitCartToOrder(
@@ -81,7 +95,5 @@ public class CartController {
        OrderDto order = cartService.submitCartToOrder(idCart);
        return  new ResponseEntity<>(order, HttpStatusCode.valueOf(200));
     }
-
-
 
 }

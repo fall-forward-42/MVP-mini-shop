@@ -12,7 +12,6 @@ import com.tdtu.lihitiShop.repository.*;
 import com.tdtu.lihitiShop.service.CartService;
 import com.tdtu.lihitiShop.service.UserService;
 import lombok.AllArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +29,20 @@ public class CartServiceImpl implements CartService {
     private OrderRepository orderRepository;
     private UserService userService;
 
+    @Override
+    public void deleteItem(CartItemDto cartItemDto){
+        String id = cartItemDto.getId_cart_item();
+        cartItemsRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Not found item in cart"));
+        cartItemsRepository.deleteById(id);
+    }
+    @Override
+    public CartItemDto updateItem(CartItemDto cartItemDto){
+        String id = cartItemDto.getId_cart_item();
+        CartItem item = cartItemsRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Not found item in cart"));
+        item.setQuantity(cartItemDto.getQuantity());
+        return CartItemMapper.mapToDto(cartItemsRepository.save(item));
+
+    }
     @Override
     public CartItemDto addProductToCart(String userId, String productId, int quantity) {
         //find user

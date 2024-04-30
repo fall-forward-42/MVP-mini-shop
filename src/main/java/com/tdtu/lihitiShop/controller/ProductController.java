@@ -1,24 +1,15 @@
 package com.tdtu.lihitiShop.controller;
 
-import com.tdtu.lihitiShop.dto.ProductDto;
+import com.tdtu.lihitiShop.dto.CategoryDto;
 import com.tdtu.lihitiShop.dto.ProductDto;
 import com.tdtu.lihitiShop.dto.ProductImagesDto;
-import com.tdtu.lihitiShop.entity.Product;
-import com.tdtu.lihitiShop.mapper.ProductMapper;
 import com.tdtu.lihitiShop.service.ProductImagesService;
 import com.tdtu.lihitiShop.service.ProductService;
 import lombok.AllArgsConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -29,6 +20,21 @@ public class ProductController {
 
     private ProductImagesService productImagesService;
 
+    @PostMapping("/search-by-category")
+    public ResponseEntity<List<ProductDto>> searchProductsByCate(@RequestBody CategoryDto categoryDto){
+        List<ProductDto> result = productService.getAllProductsByCate(categoryDto);
+        return new ResponseEntity<>(result,HttpStatus.ACCEPTED);
+    }
+    @PostMapping("/search-by-name")
+    public ResponseEntity<List<ProductDto>> searchProductsByName(@RequestBody String productName){
+        List<ProductDto> result = productService.getAllProductsByProductName(productName);
+        return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+    }
+    @PostMapping("/search-by-name-and-category")
+    public ResponseEntity<List<ProductDto>> searchProductsByNameAndCate(@RequestBody String productName,@RequestBody CategoryDto categoryDto){
+        List<ProductDto> result = productService.getAllProductsByProductNameAndCategory(productName,categoryDto);
+        return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+    }
 
     @PostMapping("{id}/image")
     public ResponseEntity<ProductImagesDto> createImageForProduct(@PathVariable("id") String id
@@ -36,7 +42,6 @@ public class ProductController {
         ProductImagesDto savedImage = productImagesService.createImages(id,imagesDto);
 
         return new ResponseEntity<>(savedImage,HttpStatus.CREATED);
-
     }
     @GetMapping("{id}/images")
     public ResponseEntity<List<ProductImagesDto>> getImagesByProductId(@PathVariable("id") String id){

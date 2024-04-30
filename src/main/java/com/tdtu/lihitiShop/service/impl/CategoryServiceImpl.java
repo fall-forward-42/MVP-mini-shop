@@ -25,7 +25,6 @@ public class CategoryServiceImpl implements CategoryService {
         Category savedCate = categoryRepository.save(cate);
         return CategoryMapper.mapToCategoryDto(savedCate);
     }
-
     @Override
     public CategoryDto getCateById(String idCate) {
         //find cate in DB and return cateDTO or throw exception

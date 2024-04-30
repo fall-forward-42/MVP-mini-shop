@@ -1,10 +1,10 @@
 package com.tdtu.lihitiShop.service.impl;
 
+import com.tdtu.lihitiShop.dto.CategoryDto;
 import com.tdtu.lihitiShop.dto.ProductDto;
 import com.tdtu.lihitiShop.entity.Category;
 import com.tdtu.lihitiShop.entity.Product;
 import com.tdtu.lihitiShop.exception.ResourceNotFoundException;
-import com.tdtu.lihitiShop.mapper.CategoryMapper;
 import com.tdtu.lihitiShop.mapper.ProductMapper;
 import com.tdtu.lihitiShop.repository.CategoryRepository;
 import com.tdtu.lihitiShop.repository.ProductRepository;
@@ -12,12 +12,9 @@ import com.tdtu.lihitiShop.repository.specification.ProductSpecifications;
 import com.tdtu.lihitiShop.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.context.properties.PropertyMapper;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,6 +72,29 @@ public class ProductServiceImpl implements ProductService {
         Product updateObj = productRepository.save(item);
 
         return ProductMapper.mapToProductDto(updateObj);
+    }
+
+    @Override
+    public List<ProductDto> getAllProductsByCate(CategoryDto categoryDto) {
+        return productRepository.findAll().stream()
+                .filter((m)->m.getCategory().getId_cate().equals(categoryDto.getId_cate()))
+                .map(ProductMapper::mapToProductDto).toList();
+    }
+
+    @Override
+    public List<ProductDto> getAllProductsByProductName(String name) {
+        return productRepository.findAll().stream()
+                .filter((m)->m.getName().toLowerCase().contains(name.toLowerCase()))
+                .map(ProductMapper::mapToProductDto).toList();
+    }
+
+    @Override
+    public List<ProductDto> getAllProductsByProductNameAndCategory(String name, CategoryDto categoryDto) {
+        return productRepository.findAll().stream()
+                .filter(m -> m.getName().toLowerCase().contains(name.toLowerCase())
+                        && m.getCategory().getId_cate().equalsIgnoreCase(categoryDto.getId_cate()))
+                .map(ProductMapper::mapToProductDto)
+                .collect(Collectors.toList());
     }
 
     @Override

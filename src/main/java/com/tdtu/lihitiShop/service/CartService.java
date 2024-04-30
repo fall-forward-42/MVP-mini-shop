@@ -11,6 +11,10 @@ import java.util.List;
 
 @Service
 public interface CartService {
+    void deleteItem(CartItemDto cartItemDto);
+
+    CartItemDto updateItem(CartItemDto cartItemDto);
+
     public CartItemDto addProductToCart(String userId, String productId, int quantity);
 
 

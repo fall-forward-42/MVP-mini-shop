@@ -1,96 +1,47 @@
 package com.tdtu.lihitiShop;
 
-import com.tdtu.lihitiShop.controller.AuthController;
-import com.tdtu.lihitiShop.dto.ReqResDto;
-import com.tdtu.lihitiShop.dto.UserDto;
-import com.tdtu.lihitiShop.entity.User;
-import com.tdtu.lihitiShop.mapper.UserMapper;
-import com.tdtu.lihitiShop.repository.UserRepository;
-import com.tdtu.lihitiShop.security.JWTutils;
-import com.tdtu.lihitiShop.service.UserService;
-import com.tdtu.lihitiShop.service.impl.AuthServiceImpl;
-import com.tdtu.lihitiShop.service.impl.UserServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tdtu.lihitiShop.dto.CategoryDto;
+import com.tdtu.lihitiShop.entity.Category;
+import com.tdtu.lihitiShop.mapper.CategoryMapper;
+import com.tdtu.lihitiShop.repository.CategoryRepository;
+import com.tdtu.lihitiShop.service.CategoryService;
 import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.BeforeEach;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.verification.VerificationMode;
+import org.mockito.Mockito;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.BindingResult;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import org.springframework.test.web.servlet.MockMvc;
+import java.util.UUID;
 
 @SpringBootTest
+@AutoConfigureMockMvc
+@AllArgsConstructor
 class LihitiShopApplicationTests {
 
+	MockMvc mockMvc;
+	ObjectMapper objectMapper;
 	@MockBean
-	private UserRepository userRepository;
-
-	@InjectMocks
-	private UserServiceImpl userService;
-
-	@Mock
-	private UserMapper userMapper;
-
-
+	CategoryRepository categoryRepository;
+	CategoryService categoryService;
 
 	@Test
-	void testRegister() {
-		// Prepare test data
-		User userRegister = new User();
-		userRegister.setUsername("lehaitien42");
-		userRegister.setPassword("422003tT");
-		userRegister.setRole("USER");
-		userRegister.setAddress("Dong nai");
-		userRegister.setFullName("Le Hai Tien");
+	public void createCate_success() throws Exception {
+		CategoryDto categoryDto = new CategoryDto();
+		categoryDto.setName("Test Category");
 
-		User userSaved = new User();
-		userSaved.setUsername("lehaitien42");
+		Category category = CategoryMapper.mapToCategory(categoryDto);
+		category.setId_cate(UUID.randomUUID().toString());
 
+		Mockito.when(categoryRepository.save(category)).thenReturn(category);
+		Mockito.when(CategoryMapper.mapToCategoryDto(category)).thenReturn(categoryDto);
 
+		CategoryDto savedCategoryDto = categoryService.createCate(categoryDto);
 
-
-		// Mock the dependencies
-		when(userRepository.save(any(User.class))).thenReturn(userSaved);
-
-		// Call the method under test
-		UserDto saveUser = userService.createUser(UserMapper.mapToUserDto(userRegister));
-
-		// Mock the dependencies
-		//when(userRepository.save(userRegister)).thenReturn(userRegister);
-
-		assertEquals(saveUser.getUsername(),userSaved.getUsername());
-	}
-
-	@Test
-	void testLogin() {
-		// Prepare test data
-		User userRegister = new User();
-		userRegister.setUsername("lehaitien");
-		userRegister.setPassword("422003tT");
-
-		List<UserDto> service = userService.getAllUsers().stream()
-				.filter(e->e.getUsername().equals(userRegister.getUsername())).toList();
-
-		// Mock the dependencies
-		when(userRepository.findByUsername(userRegister.getUsername()))
-				.thenReturn(Optional.of(userRegister));
-
-		assertEquals(1,service.size());
+		Assertions.assertThat(savedCategoryDto).isNotNull();
+		Assertions.assertThat(savedCategoryDto.getName()).isEqualTo(categoryDto.getName());
 	}
 
 

@@ -50,11 +50,12 @@ Combines both @Controller and @ResponseBody.
   # General Structure:
 ![allstruct](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/fe7caa1b-f408-451d-82fe-28db74b2924b)
 
-<p align="left"> 
-- Controller:
-The controller folder contains classes that handle incoming HTTP requests, process the requests, and return appropriate responses.
-Controllers use annotations like @RestController and @RequestMapping to define endpoints and map request URLs to specific methods.
-Controllers interact with services to delegate business logic execution.
-  
-</p>
+### Controller:
+- The controller folder contains classes that handle incoming HTTP requests, process the requests, and return appropriate responses.
+- Controllers use annotations like @RestController and @RequestMapping to define endpoints and map request URLs to specific methods.
+- Controllers interact with services to delegate business logic execution.
+### Service:
+- The service folder houses classes that contain business logic and perform specific operations on the data.
+- Services encapsulate the application's business logic and are responsible for processing data, applying rules, and interacting with repositories.
+- Services are typically called by controllers to handle business operations.
 

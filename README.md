@@ -43,3 +43,18 @@ Combines both @Controller and @ResponseBody.
   # Database Design:
   ## Physical-level ERD:
   ![Untitled](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/352728df-af32-4191-b8c5-e00733209fd7)
+  ### Explain:
+  The Entity-Relationship Diagram (ERD) provided illustrates the relationships between various entities in the database schema. The relationships depicted in the ERD showcase how different tables interact with each other. For instance, the relationship between "Categories" and "Products" is established as a one-to-many relationship, where each category can have multiple products. This is facilitated by the "category_id" in the "Products" table, which acts as a foreign key referencing the primary key "category_id" in the "Categories" table. Similarly, relationships such as "Users" and "Carts," "Users" and "Orders," "Products" and "Cart Items," "Orders" and "Order Items," and "Carts" and "Cart Items" are defined to maintain data consistency and integrity. These relationships help in organizing and managing data effectively, ensuring that related entities are interconnected and can be accessed cohesively within the database system.
+
+  # Project Directory Structure:
+  # General Structure:
+![allstruct](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/fe7caa1b-f408-451d-82fe-28db74b2924b)
+
+<p align="left"> 
+- Controller:
+The controller folder contains classes that handle incoming HTTP requests, process the requests, and return appropriate responses.
+Controllers use annotations like @RestController and @RequestMapping to define endpoints and map request URLs to specific methods.
+Controllers interact with services to delegate business logic execution.
+  
+</p>
+

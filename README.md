@@ -250,18 +250,17 @@ localhost:8080/api/orders/{id}
 ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/fdc50d65-1b61-41bf-9653-51bd881b6d85)
 
 ## User Interface (In progress)
-- Login
+## Follow this repo: https://github.com/fall-forward-42/MVP-lihishop-UI 
+#### Login
 ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/818fc2bd-9840-4518-a60d-765a0d419943)
-
-- Products List
+#### Products List
 ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/c789a528-207f-45fe-ae9b-8c4ceadaae1b)
+#### The toast after choose item into your cart
+[image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/82bef503-8523-4715-bf32-4960323e6477)
+#### Show your cart
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/a7ba2798-a3b7-4fdf-84aa-8bfef7b8e941)
 
-- The toast after choose item into your cart
-  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/82bef503-8523-4715-bf32-4960323e6477)
-- Show your cart
-  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/a7ba2798-a3b7-4fdf-84aa-8bfef7b8e941)
-
-- Show your Orders
-  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/09d95b9a-1d55-498d-9ec7-aed7de9a9a00)
+#### Show your Orders
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/09d95b9a-1d55-498d-9ec7-aed7de9a9a00)
 
 

@@ -1,27 +1,7 @@
 
 # Theoretical foundation
 
-# What is Annotation in Spring Boot and the common Annotations used in the project:
-## What is Annotation in Spring Boot?
-In Spring Boot, Annotations are a way to provide metadata to your source code, helping the framework understand how to implement the components of your application. This enables Spring Boot to automatically configure and manage the components easily.
-## Common Annotations used in the project:
-@RestController:
-Annotates a Controller to handle RESTful requests.
-Combines both @Controller and @ResponseBody.
-@RequestMapping:
-Maps HTTP requests to a handling method in the Controller.
-Defines the URI and HTTP method (GET, POST, PUT, DELETE) for the handling.
-@Autowired:
-Specifies that a field or method will be injected with a dependency by the Spring container.
-@Service, @Repository, @Component:
-@Service: Specifies that a class is a service.
-@Repository: Specifies that a class is a repository, typically used for accessing a database.
-@Component: Marks a class as a Spring component, which can be managed and have dependencies managed.
-@Configuration, @Bean:
-@Configuration: Marks a class that contains methods to create Beans.
-@Bean: Marks a method that returns an object managed by Spring.
-@PostMapping, @GetMapping, @PutMapping, @DeleteMapping:
-Corresponding to the HTTP methods POST, GET, PUT, DELETE.
+
 
 # Technologies used:
 ## Spring Boot
@@ -37,3 +17,29 @@ ReactJS is a JavaScript library for building user interfaces. It allows develope
 ## Redux Toolkits
 Redux Toolkit is a package that simplifies the management of state in React applications. It provides a set of tools and utilities to manage the global state of an application, including actions, reducers, and the Redux store. Redux Toolkit helps to eliminate boilerplate code and improves developer productivity by providing a more intuitive and efficient way to handle application state.
 These technologies were chosen for their effectiveness, scalability, and compatibility with each other. They work together to create a robust and secure web application with efficient data handling and a responsive user interface.
+
+# What is Annotation in Spring Boot and the common Annotations used in the project:
+## What is Annotation in Spring Boot?
+In Spring Boot, Annotations are a way to provide metadata to your source code, helping the framework understand how to implement the components of your application. This enables Spring Boot to automatically configure and manage the components easily.
+## Common Annotations used in the project:
+- @RestController:
+Annotates a Controller to handle RESTful requests.
+Combines both @Controller and @ResponseBody.
+- @RequestMapping:
+  Maps HTTP requests to a handling method in the Controller.
+  Defines the URI and HTTP method (GET, POST, PUT, DELETE) for the handling.
+- @Autowired:
+  Specifies that a field or method will be injected with a dependency by the Spring container.
+- @Service, @Repository, @Component:
+- @Service: Specifies that a class is a service.
+- @Repository: Specifies that a class is a repository, typically used for accessing a database.
+- @Component: Marks a class as a Spring component, which can be managed and have dependencies managed.
+- @Configuration, @Bean:
+- @Configuration: Marks a class that contains methods to create Beans.
+- @Bean: Marks a method that returns an object managed by Spring.
+- @PostMapping, @GetMapping, @PutMapping, @DeleteMapping:
+  Corresponding to the HTTP methods POST, GET, PUT, DELETE.
+
+  # Database Design:
+  ## Physical-level ERD:
+  ![Untitled](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/352728df-af32-4191-b8c5-e00733209fd7)

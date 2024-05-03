@@ -1,4 +1,4 @@
-
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/8e9a887e-1f88-402f-9bf9-b70585db0dd2)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/00c492fe-4a41-496c-beb1-7afac45f3167)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/aec401ff-aefa-4373-8d8f-ff34dc559b9a)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/d3fcad45-d823-4a3b-baa8-2322ab78559d)
 # Theoretical foundation
 
 
@@ -133,28 +133,135 @@ spring.jpa.hibernate.ddl-auto=update
 ```
 localhost:8080
 ```
-# API endpoints
+# API endpoints and UI
 ## All of endpoints:
-• POST: /api/auth/register: Register a new account.
-• POST: /api/auth/login: Log in to the system.• GET: /api/users: Get a list of users.
-• GET: /api/users/single: Get information of a specific user.
-• GET: /api/categories: Get a list of product categories.
-• GET: /api/products: Get a list of products.• POST: /api/products: Create a new product.
-• POST: /api/products/search-by-category: Search for products by category.
-• DELETE: /api/products/{id}: Delete a specific product by ID.
-• POST: /api/carts: Add a product to the shopping cart.
-• GET: /api/carts: Get a list of products in the shopping cart.
-• PUT: /api/carts/update-quantity-item: Update the quantity of a product in the shopping cart.
-• DELETE: /api/carts/delete-item: Remove a product from the shopping cart.
-• GET: /api/carts/submit: Place an order and make payment from the shopping cart.
-• GET: /api/orders/: Get a list of all orders for a user.
-• GET: /api/orders/{id}: Get detailed information of a specific order by ID.
+- POST: /api/auth/register: Register a new account.
+- POST: /api/auth/login: Log in to the system.• GET: /api/users: Get a list of users.
+- GET: /api/users/single: Get information of a specific user.
+- GET: /api/categories: Get a list of product categories.
+- GET: /api/products: Get a list of products.• POST: /api/products: Create a new product.
+- POST: /api/products/search-by-category: Search for products by category.
+- DELETE: /api/products/{id}: Delete a specific product by ID.
+- POST: /api/carts: Add a product to the shopping cart.
+- GET: /api/carts: Get a list of products in the shopping cart.
+- PUT: /api/carts/update-quantity-item: Update the quantity of a product in the shopping cart.
+- DELETE: /api/carts/delete-item: Remove a product from the shopping cart.
+- GET: /api/carts/submit: Place an order and make payment from the shopping cart.
+- GET: /api/orders/: Get a list of all orders for a user.
+- GET: /api/orders/{id}: Get detailed information of a specific order by ID.
 => These API endpoints define the various operations that can be performed in the system. They allow users to register and log in, manage user accounts, retrieve lists of users, categories, and products, create and search for products, manage the shopping cart, place orders, and retrieve order information.
 ## Practise in Postman
-![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/80b39307-5256-411c-8a8d-a1dc60ab2e01)
-Method: GET
-Endpoint:
+- Endpoint:
 ```
 localhost:8080/api/auth/register
 ```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/99e1ad6a-6440-49af-9cf1-d298ea373983)
+
+
+- Endpoint:
+```
+localhost:8080/api/auth/login
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/9bafb8e4-0e1b-4534-ab27-f16786c1b5d9)
+
+
+- Endpoint:
+```
+localhost:8080/api/users/single
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/72039d82-09ec-4e8c-83de-00107916ff90)
+
+
+- Endpoint:
+```
+localhost:8080/api/categories
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/d3acbfe1-784b-447b-a534-397be1f8c506)
+
+
+- Endpoint:
+```
+localhost:8080/api/categories
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/18d1c209-553a-41c8-a51d-3e2a4d9b2248)
+
+
+- Endpoint:
+```
+localhost:8080/api/products
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/9480c0bc-6352-43d3-9cef-ba645b2a24ca)
+
+- Endpoint:
+```
+localhost:8080/api/products
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/ea96dbc2-e9e9-4f85-bd0b-df303673cd79)
+
+
+
+- Endpoint:
+```
+localhost:8080/api/products/search-by-category
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/f9453764-9eaf-4f55-a0c1-24dee1c2ab3a)
+
+- Endpoint:
+```
+localhost:8080/api/products/{id}
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/7dc45f91-4141-4310-8a42-14fabb4383ad)
+
+- Endpoint:
+```
+localhost:8080/api/carts (If it is not exist any item in your cart, create new cart)
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/40aae0f8-efd7-4f8b-abef-b7f526ee7f32)
+
+- Endpoint:
+```
+localhost:8080/api/carts
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/a24f1e46-e841-4370-9526-5d0643f88b00)
+
+- Endpoint:
+```
+localhost:8080/api/carts/update-quantity-item (change quantity from 2 into 7) 
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/cb1129e5-b752-4907-a287-295935e31710)
+
+- Endpoint:
+```
+localhost:8080/carts/delete-item
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/83970efb-6ad6-44f4-86f4-53da70127466)
+
+- Endpoint:
+```
+localhost:8080/api/carts/submit
+```
+- Explaint: System will get all items in your recent cart and make an order for this cart, then the previous cart will be deleted.
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/77e83f91-f28f-4d99-9c99-066e292d341b)
+
+- Endpoint:
+```
+localhost:8080/api/orders/{id}
+```
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/fdc50d65-1b61-41bf-9653-51bd881b6d85)
+
+## User Interface (In progress)
+- Login
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/818fc2bd-9840-4518-a60d-765a0d419943)
+
+- Products List
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/c789a528-207f-45fe-ae9b-8c4ceadaae1b)
+
+- The toast after choose item into your cart
+  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/82bef503-8523-4715-bf32-4960323e6477)
+- Show your cart
+  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/a7ba2798-a3b7-4fdf-84aa-8bfef7b8e941)
+
+- Show your Orders
+  ![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/09d95b9a-1d55-498d-9ec7-aed7de9a9a00)
+
 

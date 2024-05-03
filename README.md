@@ -129,4 +129,32 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 spring.jpa.hibernate.ddl-auto=update
 ```
 3. Run procject in IDE
+4. Url for APIs:
+```
+localhost:8080
+```
+# API endpoints
+## All of endpoints:
+• POST: /api/auth/register: Register a new account.
+• POST: /api/auth/login: Log in to the system.• GET: /api/users: Get a list of users.
+• GET: /api/users/single: Get information of a specific user.
+• GET: /api/categories: Get a list of product categories.
+• GET: /api/products: Get a list of products.• POST: /api/products: Create a new product.
+• POST: /api/products/search-by-category: Search for products by category.
+• DELETE: /api/products/{id}: Delete a specific product by ID.
+• POST: /api/carts: Add a product to the shopping cart.
+• GET: /api/carts: Get a list of products in the shopping cart.
+• PUT: /api/carts/update-quantity-item: Update the quantity of a product in the shopping cart.
+• DELETE: /api/carts/delete-item: Remove a product from the shopping cart.
+• GET: /api/carts/submit: Place an order and make payment from the shopping cart.
+• GET: /api/orders/: Get a list of all orders for a user.
+• GET: /api/orders/{id}: Get detailed information of a specific order by ID.
+=> These API endpoints define the various operations that can be performed in the system. They allow users to register and log in, manage user accounts, retrieve lists of users, categories, and products, create and search for products, manage the shopping cart, place orders, and retrieve order information.
+## Practise in Postman
+![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/80b39307-5256-411c-8a8d-a1dc60ab2e01)
+Method: GET
+Endpoint:
+```
+localhost:8080/api/auth/register
+```
 

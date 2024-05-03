@@ -1,8 +1,12 @@
-![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/8e9a887e-1f88-402f-9bf9-b70585db0dd2)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/00c492fe-4a41-496c-beb1-7afac45f3167)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/aec401ff-aefa-4373-8d8f-ff34dc559b9a)![image](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/d3fcad45-d823-4a3b-baa8-2322ab78559d)
-# Theoretical foundation
-
-
-
+# Midterm Project of Java Technology - Le Hai Tien - 52101002 
+# Introduce
+The LishiShop Web Application is a comprehensive e-commerce platform that combines the power of Spring Boot, Spring Security, Spring Data JPA, MySQL, ReactJS, and Redux Toolkit to provide a secure and user-friendly shopping experience.
+The backend of the application is built using Spring Boot, which exposes a set of APIs to handle various functionalities, such as user authentication, product management, and order processing. Spring Security with JWT (JSON Web Token) authentication is integrated to ensure the security of the application, allowing only authorized users to access sensitive information and perform critical actions.
+The data management of the application is handled by Spring Data JPA, which provides an efficient and easy-to-use way to interact with the MySQL database, a robust and scalable relational database management system.
+The frontend of the application is built using ReactJS, a popular JavaScript library for building user interfaces. ReactJS allows the creation of reusable UI components and efficient management of the application's state. To further enhance the state management, Redux Toolkit, a powerful library, is integrated to simplify the handling of complex state-related tasks.
+The combination of these technologies creates a robust and scalable solution for the LishiShop Web Application, providing a secure and efficient API layer on the backend and a visually appealing and user-friendly interface on the frontend.
+Users can browse the available products, add them to their shopping carts, and place orders, with the application's security measures ensuring the protection of user data and transactions.
+Overall, the LishiShop Web Application is designed to cater to the needs of food enthusiasts, restaurant owners, and home cooks, offering a trusted and reliable platform for their culinary needs.
 # Technologies used:
 ## Spring Boot
 Spring Boot is a framework that simplifies the development of Java applications, especially web applications. It provides a streamlined way to set up and configure Spring-based applications with minimal boilerplate code. Spring Boot includes features such as auto-configuration, which automatically configures dependencies based on the classpath, and embedded servers, which allow applications to be run without the need for a separate server installation.
@@ -69,20 +73,20 @@ Combines both @Controller and @ResponseBody.
 - Security configurations ensure that endpoints are secure and define roles and permissions for users.
 #### Explain for security folder:
 ##### JWTAuthFilter:
-This is a custom filter that extends OncePerRequestFilter and is responsible for validating and authenticating incoming requests using JWT tokens.
-It extracts the JWT token from the request header, validates the token, and sets the user's authentication in the SecurityContextHolder if the token is valid.
-This filter is used to ensure that requests are authenticated before they are processed by the application.
+- This is a custom filter that extends OncePerRequestFilter and is responsible for validating and authenticating incoming requests using JWT tokens.
+- It extracts the JWT token from the request header, validates the token, and sets the user's authentication in the SecurityContextHolder if the token is valid.
+- This filter is used to ensure that requests are authenticated before they are processed by the application.
 ##### JWTutils:
-This is a utility class that provides methods for generating, validating, and extracting information from JWT tokens.
-It has a private SecretKey field that is used to sign and verify the tokens.
-The class provides methods for generating access tokens and refresh tokens, extracting claims from tokens, and validating token expiration.
-This utility class is used by the JWTAuthFilter to handle the JWT-related operations.
-SecurityConfig:
-This is the Spring Security configuration class that sets up the security filter chain and defines the authorization rules for the application.
-It configures the CSRF and CORS settings, sets the session management policy to be stateless, and registers the authenticationProvider and 
+- This is a utility class that provides methods for generating, validating, and extracting information from JWT tokens.
+- It has a private SecretKey field that is used to sign and verify the tokens.
+- The class provides methods for generating access tokens and refresh tokens, extracting claims from tokens, and validating token expiration.
+- This utility class is used by the JWTAuthFilter to handle the JWT-related operations.
+##### SecurityConfig:
+- This is the Spring Security configuration class that sets up the security filter chain and defines the authorization rules for the application.
+- It configures the CSRF and CORS settings, sets the session management policy to be stateless, and registers the authenticationProvider and 
 ##### jwtAuthFilter:
-The authorization rules are defined to allow public access to certain endpoints, restrict access to specific roles for other endpoints, and require authentication for all other requests.
-The configuration also sets up the DaoAuthenticationProvider and BCryptPasswordEncoder for user authentication and password hashing.
+- The authorization rules are defined to allow public access to certain endpoints, restrict access to specific roles for other endpoints, and require authentication for all other requests.
+- The configuration also sets up the DaoAuthenticationProvider and BCryptPasswordEncoder for user authentication and password hashing.
 
 
 

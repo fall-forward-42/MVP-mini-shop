@@ -51,11 +51,82 @@ Combines both @Controller and @ResponseBody.
 ![allstruct](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/fe7caa1b-f408-451d-82fe-28db74b2924b)
 
 ### Controller:
+![controller](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/856ba7a8-4e6e-4364-8917-35dbb8139e48)
 - The controller folder contains classes that handle incoming HTTP requests, process the requests, and return appropriate responses.
 - Controllers use annotations like @RestController and @RequestMapping to define endpoints and map request URLs to specific methods.
 - Controllers interact with services to delegate business logic execution.
+  
 ### Service:
+![service](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/1f979d41-c47b-4760-9427-0b1e0e76a1ce)
+
 - The service folder houses classes that contain business logic and perform specific operations on the data.
 - Services encapsulate the application's business logic and are responsible for processing data, applying rules, and interacting with repositories.
 - Services are typically called by controllers to handle business operations.
+### Security:
+![secu](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/d3179cc1-df2c-4cc7-a687-332935afcf4f)
+- The security folder contains classes related to security configurations and settings in the application.
+- Security classes define authentication, authorization, and access control rules using Spring Security features.
+- Security configurations ensure that endpoints are secure and define roles and permissions for users.
+
+
+
+### Repository:
+![repo](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/5cb3535a-ac13-49a7-916d-cbbf5410a3a0)
+- The repository folder contains classes that interact with the database, typically using Spring Data JPA.
+- Repository classes define database operations such as querying, saving, updating, and deleting entities.
+
+- Repositories are responsible for data access and communication with the underlying database.
+
+
+### DTO (Data Transfer Object):
+![dto](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/95aa4498-56f9-4ae5-813b-d7f094820b6a)
+- The DTO folder contains classes that represent data transfer objects used for transferring data between layers of the application.
+- DTO classes define the structure of data exchanged between the frontend, backend, and external systems.
+- DTOs help in decoupling the data model from the presentation layer.
+
+
+### Mapper:
+![mapper](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/6c639ae4-2c16-49c1-8a34-73c78d55321f)
+- The mapper folder contains classes that handle mapping between different data structures, such as entities and DTOs.
+- Mapper classes convert data from one format to another, facilitating communication between layers of the application.
+- Mappers help in transforming data to meet the requirements of different components.
+
+### Entity:
+![entity](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/77e55773-df62-45ed-8cc1-9419000b4697)
+- The entity folder contains classes that represent database entities or domain objects.
+- Entity classes map to database tables and define the structure of the data stored in the database.
+
+- Entities are typically annotated with JPA annotations to define relationships and mappings.
+
+
+
+### Config:
+![config](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/3831c24f-37f4-49d0-ac42-4f582b7fb1b7)
+- The config folder contains classes that define configuration settings for the application.
+
+- Configuration classes set up beans, define properties, and configure various aspects of the application.
+- Configuration classes are used to customize the behavior of the application.
+
+### Exception:
+![ex](https://github.com/fall-forward-42/MVP-mini-shop/assets/89197595/a2baaf51-c316-4592-b31c-155ada109067)
+- The exception folder contains classes that handle exceptions and errors that occur during the application's execution.
+- Exception classes define custom exception types, handle error responses, and provide meaningful error messages to users.
+- Exception handling classes help in gracefully managing errors and maintaining application stability.
+
+# Run project
+1. Initial Database in MySQL
+```
+CREATE DATABASE lihiShop
+```
+
+2. Change your application.properties
+```
+spring.application.name=lihitiShop
+spring.datasource.url=jdbc:mysql://[127.0.0.1:3306 or your localhost]/lihishop
+spring.datasource.username=root
+spring.datasource.password=[your password]
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+```
+3. Run procject in IDE
 

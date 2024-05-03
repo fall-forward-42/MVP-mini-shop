@@ -67,6 +67,22 @@ Combines both @Controller and @ResponseBody.
 - The security folder contains classes related to security configurations and settings in the application.
 - Security classes define authentication, authorization, and access control rules using Spring Security features.
 - Security configurations ensure that endpoints are secure and define roles and permissions for users.
+#### Explain for security folder:
+##### JWTAuthFilter:
+This is a custom filter that extends OncePerRequestFilter and is responsible for validating and authenticating incoming requests using JWT tokens.
+It extracts the JWT token from the request header, validates the token, and sets the user's authentication in the SecurityContextHolder if the token is valid.
+This filter is used to ensure that requests are authenticated before they are processed by the application.
+##### JWTutils:
+This is a utility class that provides methods for generating, validating, and extracting information from JWT tokens.
+It has a private SecretKey field that is used to sign and verify the tokens.
+The class provides methods for generating access tokens and refresh tokens, extracting claims from tokens, and validating token expiration.
+This utility class is used by the JWTAuthFilter to handle the JWT-related operations.
+SecurityConfig:
+This is the Spring Security configuration class that sets up the security filter chain and defines the authorization rules for the application.
+It configures the CSRF and CORS settings, sets the session management policy to be stateless, and registers the authenticationProvider and 
+##### jwtAuthFilter:
+The authorization rules are defined to allow public access to certain endpoints, restrict access to specific roles for other endpoints, and require authentication for all other requests.
+The configuration also sets up the DaoAuthenticationProvider and BCryptPasswordEncoder for user authentication and password hashing.
 
 
 

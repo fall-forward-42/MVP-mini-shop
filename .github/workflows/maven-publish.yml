@@ -44,8 +44,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/lihiti-shop-backend:latest .
+          docker build -t lehaitien/lihiti-shop-backend:latest .
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/lihiti-shop-backend:latest
+          docker push lehaitien/lihiti-shop-backend:latest
